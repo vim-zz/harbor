@@ -6,6 +6,11 @@
     cmd = "cp " $0
     # system(cmd)
     print cmd
+    # if ($1 ~ /"tar.gz"/ ) {
+    cmd = "tar xvfz " $1 " --directory " $2
+    # system(cmd)
+    print cmd
+    # }
 }
 
 /^RUN/ {
