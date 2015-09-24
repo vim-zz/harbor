@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cwd=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+docker run -it -v ${cwd}:/opt/harbor ${1}

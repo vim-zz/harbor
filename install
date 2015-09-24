@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+	input="target/Dockerfile"
+else
+	input=${1}
+fi
+
+awk -f multiline_joiner.awk ${input} | awk -f docker_cmd_parser.awk | while read line
+do
+	echo $line
+	eval $line
+done
