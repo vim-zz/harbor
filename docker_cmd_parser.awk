@@ -1,5 +1,5 @@
 /^ADD/ {
-	sub(/ADD/, "")
+    sub(/ADD/, "")
     cmd = "mkdir -p $(dirname " $2 ")"
     # system(cmd)
     print cmd
@@ -16,8 +16,15 @@
 }
 
 /^ENV/ {
-	sub(/ENV /, "")
-	sub(/ /, "=")
-	env = $0
-	print env
+    sub(/ENV /, "")
+    sub(/ /, "=")
+    env = $0
+    print env
+}
+
+/^USER/ {
+    sub(/USER/, "")
+    cmd = "useradd -g staff -G staff -s /bin/bash -p banana -d /home/"$1" -m "$1
+    # system(cmd)
+    print cmd
 }

@@ -1,6 +1,6 @@
 FROM debian:wheezy
 
-ADD . /home/root
+# ADD . /home/root
 WORKDIR /home/root
 # CMD ["bash", "./install"]
 CMD ["bash"]
