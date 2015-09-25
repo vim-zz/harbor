@@ -2,4 +2,4 @@
 
 cwd=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-docker run -it -v ${cwd}:/home/root ${1}
+docker run -it -v ${cwd}:/home/pi/harbor ${1}
