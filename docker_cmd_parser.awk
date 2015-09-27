@@ -1,35 +1,29 @@
+/^ADD[ \t]+.*\.tar\.gz/ {
+    sub(/ADD/, "")
+    # system(cmd)
+    print "mkdir -p $(dirname " $2 ") ; tar xvfz " $1 " --directory " $2
+}
+
 /^ADD/ {
     sub(/ADD/, "")
-    cmd = "mkdir -p $(dirname " $2 ")"
     # system(cmd)
-    print cmd
-    cmd = "cp " $0
-    # system(cmd)
-    print cmd
-    # if ($1 ~ /"tar.gz"/ ) {
-    cmd = "tar xvfz " $1 " --directory " $2
-    # system(cmd)
-    print cmd
-    # }
+    print "mkdir -p $(dirname " $2 ") ; cp " $0
 }
 
 /^RUN/ {
     sub(/RUN/, "")
-    cmd = $0
     # system(cmd)
-    print cmd
+    print $0
 }
 
 /^ENV/ {
     sub(/ENV /, "")
     sub(/ /, "=")
-    env = $0
-    print env
+    print $0
 }
 
 /^USER/ {
     sub(/USER/, "")
-    cmd = "useradd -g staff -G staff -s /bin/bash -p banana -d /home/"$1" -m "$1
     # system(cmd)
-    print cmd
+    print "useradd -g staff -G staff -s /bin/bash -p banana -d /home/"$1" -m "$1
 }

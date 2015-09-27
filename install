@@ -6,10 +6,15 @@ else
 	input=${1}
 fi
 
-awk -f multiline_joiner.awk ${input} | while read line
+# use absolute path of scripts as later eval might change the working dir
+joiner=$(readlink -e multiline_joiner.awk)
+parser=$(readlink -e docker_cmd_parser.awk)
+
+awk -f ${joiner} ${input} | while read line
 do
-	bash_line=$(echo $line | awk -f docker_cmd_parser.awk)
+	bash_line=$(echo $line | awk -f ${parser})
 	echo ""
 	echo "$line"
+	echo "$bash_line"
 	eval $bash_line
 done
