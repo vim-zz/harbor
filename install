@@ -6,8 +6,10 @@ else
 	input=${1}
 fi
 
-awk -f multiline_joiner.awk ${input} | awk -f docker_cmd_parser.awk | while read line
+awk -f multiline_joiner.awk ${input} | while read line
 do
-	echo $line
-	eval $line
+	bash_line=$(echo $line | awk -f docker_cmd_parser.awk)
+	echo ""
+	echo "$line"
+	eval $bash_line
 done
