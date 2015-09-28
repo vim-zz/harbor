@@ -1,5 +1,6 @@
 #!/bin/bash
 
 cwd=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $cwd
 
-docker run -it -v ${cwd}:/home/pi/harbor ${1}
+docker build --rm -t ${1} .

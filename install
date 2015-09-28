@@ -7,8 +7,8 @@ else
 fi
 
 # use absolute path of scripts as later eval might change the working dir
-joiner=$(readlink -e multiline_joiner.awk)
-parser=$(readlink -e docker_cmd_parser.awk)
+joiner=$(readlink -e src/multiline_joiner.awk)
+parser=$(readlink -e src/docker_cmd_parser.awk)
 
 awk -f ${joiner} ${input} | while read line
 do

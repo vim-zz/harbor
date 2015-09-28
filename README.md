@@ -5,12 +5,16 @@ inspired by http://blog.xebia.com/2014/07/03/dockerfiles-as-automated-installati
 
 # Usage
 
-build docker image:
 
-    $ ./build_docker_image <name>
-    $ ./run_docker_image <name>
+There are 2 purposes using this, one is usin docker VM, the other to run native.
 
-build the target
+## Docker VM
 
-    root@docker:/home/root# ./install
+build docker image and run it:
 
+    $ ./simualte <name>
+	> ./install
+
+## Native
+
+	$ ./install

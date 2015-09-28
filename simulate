@@ -1,0 +1,4 @@
+#!/bin/bash
+
+src/build_docker_image ${1}
+src/run_docker_image ${1}
